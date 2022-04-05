@@ -1,0 +1,24 @@
+- name: pyckage-cookiecutter
+  type: Python Backend Package 
+  start: September 2021
+  end: Present
+  description: A cookiecutter template that generates a full structure (including a predefined CI/CD pipeline in GitLab, GitHub and Bitbucket) for creating a PyPi standard package.
+  link: https://github.com/zhiwei2017/pyckage-cookiecutter
+- name: kafkatasque
+  type: Python Backend Package 
+  start: September 2019
+  end: Present
+  description: A kafka-python based task management package.
+  link: https://github.com/zhiwei2017/kafkatasque
+- name: named_enum
+  type: Python Backend Package 
+  start: November 2018
+  end: Present
+  description: Basic Python package. It provides several enumeration classes, which extends the python default Enum class with various functionalities.
+  link: https://github.com/zhiwei2017/named_enum
+- name: sspdatatables
+  type: Python Frontend Package 
+  start: December 2018
+  end: Present
+  description: Python package for Django project. It uses the datatables package and provides a nice Django- project-friendly interface for implementing the server side processing table.
+  link: https://github.com/zhiwei2017/sspdatatables

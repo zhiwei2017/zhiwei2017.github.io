@@ -1,0 +1,46 @@
+- name: numpy
+  score: 5
+- name: pandas
+  score: 5
+- name: scikit-learn
+  score: 5
+- name: xgboost
+  score: 3
+- name: spacy
+  score: 4
+- name: Pytorch
+  score: 3
+- name: tensorflow
+  score: 2
+- name: pytesseract
+  score: 2
+- name: opencv-python
+  score: 1 
+- name: PySpark
+  score: 3
+- name: dusk
+  score: 3
+- name: SQLAlchemy
+  score: 5
+- name: Django
+  score: 5
+- name: Flask
+  score: 5
+- name: FastAPI
+  score: 5
+- name: Scrapy
+  score: 5
+- name: cookiecutter
+  score: 5
+- name: celery
+  score: 4
+- name: kafka-python
+  score: 4
+- name: libxml (C++)
+  score: 4
+- name: libsvm (C++)
+  score: 3
+- name: boost (C++)
+  score: 4
+- name: vegeta (golang)
+  score: 4

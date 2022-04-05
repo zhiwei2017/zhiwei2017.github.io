@@ -1,0 +1,8 @@
+- name: GitLab-CI
+  score: 5
+- name: GitHub-Actions
+  score: 4
+- name: Bitbucket Pipelines
+  score: 5
+- name: Jenkins
+  score: 3

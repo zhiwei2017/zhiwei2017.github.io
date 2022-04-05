@@ -1,0 +1,4 @@
+- name: Git
+  score: 5
+- name: SVN
+  score: 4

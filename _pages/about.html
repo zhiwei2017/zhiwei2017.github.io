@@ -1,0 +1,496 @@
+---
+permalink: /about/
+js_files: [/assets/js/jquery-1.10.2.min.js, /assets/js/hover.zoom.js]
+css_files: [/assets/css/bootstrap.css, /assets/css/main_profile.css]
+---
+{% for cs in page.css_files %}
+<link rel="stylesheet" href="{{ cs }}">
+{% endfor %}
+{% for js in page.js_files %}
+<script src="{{ js }}"></script>
+{% endfor %}
+
+	<!-- +++++ Welcome Section +++++ -->
+	    <div class="container pt">
+			<div class="row">
+				<div class="col-md-10 centered">
+                    <div class="row lefted subsection">
+                        <div class="col-md-6">
+                            <h3>Introduction</h3>
+                            <p class="profile-text">I&#39;m a senor programmer with good knowledge in both frontend and backend technologies, as well as Data Science. I love to follow best practices and continuously deliver high quality projects. I enjoy enhancing my coding and architecture skills all the time. Moreover, I like working in a team and exchanging knowledge with teammates constantly.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Details</h3>
+                            <p class="profile-text">
+
+                                    <strong>Name:</strong>
+                                    <br>
+                                    Zhiwei Zhang
+                                    <br>
+
+                                    <strong>Hobby:</strong>
+                                    <br>
+                                    Programming, Swimming, Movies, Traveling
+                                    <br>
+
+                                    <strong>Location:</strong>
+                                    <br>
+                                    Munich, Germany
+                            </p>
+                        </div>
+                    </div>
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+
+
+	<!-- +++++ Information Section +++++ -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 centered">
+                    <h1 class="section-header">Educations</h1>
+                    <hr>
+                    <div class="row subsection">
+                        <div class="col-lg-12 lefted">
+                            {% for edu in site.data.educations %}
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h4><strong>{{ edu.name }}</strong></h4>
+                                    <p>{{ edu.start }} - {{ edu.end }}</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="experiences-p">
+                                        <strong>
+
+                                            {{ edu.major }}
+
+                                        </strong>
+                                        <br>
+                                            {{ edu.description }}
+                                        <br>
+                                        <span class="location">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                            {{ edu.location }}
+                                        </span>
+                                        {% if edu.certification %}
+                                        <span class="seperator">|</span>
+                                        <span class="link">
+                                            <i class="fas fa-link"></i>
+                                            <a href="{{ edu.certification }}" target="_blank">Certification</a>
+                                        </span>
+                                        <br>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 centered">
+                    <h1 class="section-header">Careers</h1>
+                    <hr>
+                    <div class="row subsection">
+                        <div class="col-lg-12 lefted">
+                            {% for job in site.data.jobs %}
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h4><strong>{{ job.company }}</strong></h4>
+                                    <p>{{ job.start }} - {{ job.end }}</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="experiences-p">
+                                        <strong>{{ job.title }}</strong>
+                                        {% if job.description %}
+                                        <br>
+                                        {{ job.description }}
+                                        {% else if job.location %}
+                                        <br>
+                                        {% endif %}
+                                        {% if job.location %}
+                                        <span class="location">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                            {{ job.location }}
+                                        </span>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="abilities" class="container pt">
+            <div class="row">
+                <div class="col-md-10 centered">
+                    <h1 class="section-header">Abilities</h1>
+                    <hr>
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Programming Languages</h3>
+                            <div class="row">
+                                {% assign programming_languages_half = site.data.programming_languages.size | divided_by:2.0  | ceil%}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for pl in site.data.programming_languages limit:programming_languages_half %}
+                                        <li>
+                                            <span class="ability-title">{{ pl.name }} ({{ pl.years }} years)</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..pl.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (pl.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for pl in site.data.programming_languages offset:programming_languages_half %}
+                                        <li>
+                                            <span class="ability-title">{{ pl.name }} ({{ pl.years }} years)</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..pl.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (pl.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Frameworks/ Libraries</h3>
+                            <div class="row">
+                                {% assign libraries_half = site.data.libraries.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for lib in site.data.libraries limit:libraries_half %}
+                                        <li>
+                                            <span class="ability-title">{{ lib.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..lib.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (lib.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for lib in site.data.libraries offset:libraries_half %}
+                                        <li>
+                                            <span class="ability-title">{{ lib.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..lib.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (lib.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Version Control</h3>
+                            <div class="row">
+                                {% assign version_controls_half = site.data.version_controls.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for vc in site.data.version_controls limit:version_controls_half %}
+                                        <li>
+                                            <span class="ability-title">{{ vc.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..vc.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (vc.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for vc in site.data.version_controls offset:version_controls_half %}
+                                        <li>
+                                            <span class="ability-title">{{ vc.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..vc.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (vc.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">CI/CD</h3>
+                            <div class="row">
+                                {% assign ci_cd_half = site.data.ci_cd.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for cc in site.data.ci_cd limit:ci_cd_half %}
+                                        <li>
+                                            <span class="ability-title">{{ cc.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..cc.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (cc.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for cc in site.data.ci_cd offset:ci_cd_half %}
+                                        <li>
+                                            <span class="ability-title">{{ cc.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..cc.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (cc.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Databases</h3>
+                            <div class="row">
+                                {% assign databases_half = site.data.databases.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for db in site.data.databases limit:databases_half %}
+                                        <li>
+                                            <span class="ability-title">{{ db.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..db.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (db.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for db in site.data.databases offset:databases_half %}
+                                        <li>
+                                            <span class="ability-title">{{ db.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..db.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (db.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Others</h3>
+                            <div class="row">
+                                {% assign others_half = site.data.others.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for other in site.data.others limit:others_half %}
+                                        <li>
+                                            <span class="ability-title">{{ other.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..other.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (other.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for other in site.data.others offset:others_half %}
+                                        <li>
+                                            <span class="ability-title">{{ other.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..other.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (other.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row subsection">
+                        <div class="col-md-12 lefted">
+                            <h3 class="subsection-header">Languages</h3>
+                            <div class="row">
+                                {% assign languages_half = site.data.languages.size | divided_by:2.0 | ceil %}
+                                
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for lang in site.data.languages limit:languages_half %}
+                                        <li>
+                                            <span class="ability-title">{{ lang.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..lang.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (lang.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="no-bullets">
+                                        {% for lang in site.data.languages offset:languages_half %}
+                                        <li>
+                                            <span class="ability-title">{{ lang.name }}</span>
+                                            <span class="ability-score">
+                                                {% for i in (1..lang.score) %}
+                                                    <span class="glyphicon glyphicon-star filled"></span>
+                                                {% endfor %}
+                                                {% for i in (lang.score..4) %}
+                                                    <span class="glyphicon glyphicon-star"></span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pt">
+            <div class="row">
+                <div class="col-lg-10 centered">
+                    <h1 class="section-header">Projects</h1>
+                    {% for project in site.data.projects %}
+                    <hr>
+                    <div class="row subsection">
+                        <div class="col-lg-12 lefted">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <h4><strong>{{ project.name }}</strong></h4>
+                                    <p>{{ project.start }} – {{ project.end }}</p>
+                                </div>
+                                <div class="col-md-7">
+                                    <p class="experiences-p">
+                                        <strong>
+
+                                            {{ project.type }}
+
+                                        </strong>
+                                        <br>
+                                        {{ project.description }}
+                                        <br>
+                                        <span class="github">
+                                            <a href="{{ project.link }}" target="_blank">
+                                                <i class="fab fa-github"></i>
+                                                <span class="label">Home</span>
+                                            </a>
+                                        </span>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    

@@ -1,0 +1,15 @@
+- name: Chinese
+  level: native
+  score: 5
+- name: English
+  level: fluent
+  score: 4
+- name: German
+  level: fluent
+  score: 5
+- name: Spanish
+  level: un poco
+  score: 1
+- name: Japanese
+  level: beginner
+  score: 1

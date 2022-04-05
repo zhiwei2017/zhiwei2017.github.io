@@ -1,0 +1,35 @@
+- name: Technical University of Munich
+  start: October 2020
+  end: Present
+  major: Master - Computer Science (partial time)
+  description:
+  location: Munich, Germany
+  certification:
+- name: Stanford University
+  start: October 2017
+  end: November 2017
+  major: Course - Machine Learning
+  description: This course provided a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics included:<SPAN class=li>Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks).</SPAN><SPAN class=li>Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning).</SPAN><SPAN class=li>Best practices in machine learning (bias/variance theory, innovation process in machine learning and AI).</SPAN> Also learned how to apply learning algorithms to building smart robots (perception, control), text understanding (web search, anti-spam), computer vision, medical informatics, audio, database mining, and other areas.
+  location: Coursera, Online
+  certification: http://www.coursera.org/account/accomplishments/verify/FLB2JU74288B
+- name: University of Freiburg
+  start: October 2013
+  end: March 2017
+  major: Bachelor - Computer Science
+  description: The education was mainly C++ & python-based programming, but I also learned about SQL, UML, Machine Learning and more. During my time in college, I specialized in Information Retrieval. Here I learned about how to build a search engine, semantic search and indexing, as well as the importance of OOP-, web- and Iuser experience and design.
+  location: Freiburg, Germany
+  certification:
+- name: University of Siegen
+  start: April 2013
+  end: September 2013
+  major: Language Course - German
+  description: Learning german and preparing the german language test.
+  location: Siegen, Germany
+  certification:
+- name: Central University for Nationalities
+  start: September 2007
+  end: July 2011
+  major: Bachelor - Philosophy
+  description: The education mainly focus on the history of philosophy and religions. I specialized in scientific philosophy.
+  location: Beijing, China
+  certification:
