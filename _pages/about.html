@@ -65,8 +65,10 @@ css_files: [/assets/css/bootstrap.css, /assets/css/main_profile.css]
                                             {{ edu.major }}
 
                                         </strong>
+                                        {% if edu.description %}
                                         <br>
                                             {{ edu.description }}
+                                        {% endif %}
                                         <br>
                                         <span class="location">
                                             <i class="fas fa-map-marked-alt"></i>

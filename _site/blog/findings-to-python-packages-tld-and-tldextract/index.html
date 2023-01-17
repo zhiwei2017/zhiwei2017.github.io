@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Post: Quote - Home</title>
-<meta name="description" content="Only one thing is impossible for God: To find any sense in any copyright law on the planet.      Mark Twain">
+<!-- begin _includes/seo.html --><title>Findings to Python Packages tld and tldextract - Home</title>
+<meta name="description" content="Python Package tldextract is used by the framework scrapy for getting the top level domain.  However, on the very first call of the function tldextract.extract, it will try to download the suffix list  from https://publicsuffix.org via HTTP request by default.">
 
 
   <meta name="author" content="Zhiwei Zhang">
@@ -22,26 +22,26 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Home">
-<meta property="og:title" content="Post: Quote">
-<meta property="og:url" content="http://localhost:4000/blog/post-quote/">
+<meta property="og:title" content="Findings to Python Packages tld and tldextract">
+<meta property="og:url" content="http://localhost:4000/blog/findings-to-python-packages-tld-and-tldextract/">
 
 
-  <meta property="og:description" content="Only one thing is impossible for God: To find any sense in any copyright law on the planet.      Mark Twain">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2010-02-05T00:00:00+01:00">
+  <meta property="og:description" content="Python Package tldextract is used by the framework scrapy for getting the top level domain.  However, on the very first call of the function tldextract.extract, it will try to download the suffix list  from https://publicsuffix.org via HTTP request by default.">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/post-quote/">
+
+  <meta property="article:published_time" content="2022-04-08T02:56:15+02:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/findings-to-python-packages-tld-and-tldextract/">
 
 
 
@@ -101,10 +101,6 @@
   </ul>
 </nav>
 
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
     
 
 <div class="masthead">
@@ -147,6 +143,8 @@
 
 
 
+
+
 <div id="main" role="main">
   
   <div class="sidebar sticky">
@@ -184,11 +182,11 @@
       
         
           
-            <li><a href="https://www.linkedin.com/in/zhiwei2017/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+            <li><a href="https://www.linkedin.com/in/zhiwei2017/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
           
         
           
-            <li><a href="https://github.com/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+            <li><a href="https://github.com/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
           
         
       
@@ -251,22 +249,23 @@
     </ul>
   </div>
 </div>
+
   
   </div>
 
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Post: Quote">
-    <meta itemprop="description" content="  Only one thing is impossible for God: To find any sense in any copyright law on the planet.  Mark Twain">
-    <meta itemprop="datePublished" content="2010-02-05T00:00:00+01:00">
+    <meta itemprop="headline" content="Findings to Python Packages tld and tldextract">
+    <meta itemprop="description" content="Python Package tldextract is used by the framework scrapy for getting the top level domain. However, on the very first call of the function tldextract.extract, it will try to download the suffix list from https://publicsuffix.org via HTTP request by default.">
+    <meta itemprop="datePublished" content="2022-04-08T02:56:15+02:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/blog/post-quote/" class="u-url" itemprop="url">Post: Quote
+            <a href="http://localhost:4000/blog/findings-to-python-packages-tld-and-tldextract/" class="u-url" itemprop="url">Findings to Python Packages tld and tldextract
 </a>
           </h1>
           
@@ -295,13 +294,23 @@
 
       <section class="page__content e-content" itemprop="text">
         
-        <blockquote>
-  <p>Only one thing is impossible for God: To find any sense in any copyright law on the planet.</p>
-</blockquote>
+        <p>Python Package <strong>tldextract</strong> is used by the framework <strong>scrapy</strong> for getting the top level domain. 
+However, on the very first call of the function <strong>tldextract.extract</strong>, it will try to download the suffix list 
+from <a href="https://publicsuffix.org">https://publicsuffix.org</a> via HTTP request by default.</p>
 
-<blockquote>
-  <p><cite><a href="http://www.brainyquote.com/quotes/quotes/m/marktwain163473.html">Mark Twain</a></cite></p>
-</blockquote>
+<p>In my opinion, this is a very dangerous design for the projects using its default configuration 
+in Prod environment. Even though the author of the package <strong>tldextract</strong> stated it in the README.md 
+from <a href="https://github.com/john-kurkowski/tldextract">https://github.com/john-kurkowski/tldextract</a>, but the 
+<strong>scrapy</strong> framework didn’t mention it in their documentation.</p>
+
+<p>The solution to use a local downloaded suffix list is very simple, you can just simply add 
+those two lines in your <strong>Dockerfile</strong> after installing all the dependencies listed in your requirements.txt file:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ENV</span><span class="s"> TLDEXTRACT_CACHE="$HOME/.cache/python-tldextract"</span>
+<span class="k">RUN </span>tldextract <span class="nt">--update</span>
+</code></pre></div></div>
+
+<p>The code above will specify the cache path and download the suffix list while building docker images.</p>
 
         
       </section>
@@ -318,9 +327,11 @@
     <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
     <span itemprop="keywords">
     
-      <a href="/tags/#post-formats" class="page__taxonomy-item p-category" rel="tag">Post Formats</a><span class="sep">, </span>
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">Python</a><span class="sep">, </span>
     
-      <a href="/tags/#quote" class="page__taxonomy-item p-category" rel="tag">quote</a>
+      <a href="/tags/#tld" class="page__taxonomy-item p-category" rel="tag">tld</a><span class="sep">, </span>
+    
+      <a href="/tags/#tldextract" class="page__taxonomy-item p-category" rel="tag">tldextract</a>
     
     </span>
   </p>
@@ -337,7 +348,7 @@
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">Blog</a>
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
     
     </span>
   </p>
@@ -345,29 +356,28 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2010-02-05T00:00:00+01:00">February 5, 2010</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-04-08T02:56:15+02:00">April 8, 2022</time></p>
 
       </footer>
 
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Post%3A+Quote%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fpost-quote%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Findings+to+Python+Packages+tld+and+tldextract%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffindings-to-python-packages-tld-and-tldextract%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fpost-quote%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffindings-to-python-packages-tld-and-tldextract%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Fpost-quote%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffindings-to-python-packages-tld-and-tldextract%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/blog/post-notice/" class="pagination--pager" title="Post: Notice
-">Previous</a>
+      <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="/blog/post-link/" class="pagination--pager" title="Post: Link
+      <a href="/blog/hackintosh-monterey-12.6.1-installation/" class="pagination--pager" title="Hacktosh Monterey 12.6.1 Installation
 ">Next</a>
     
   </nav>
@@ -392,7 +402,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/blog/welcome-to-jekyll/" rel="permalink">Welcome to Jekyll!
+        <a href="/blog/hackintosh-monterey-12.6.1-installation/" rel="permalink">Hacktosh Monterey 12.6.1 Installation
 </a>
       
     </h2>
@@ -410,137 +420,17 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          4 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...</p>
-  </article>
-</div>
+    <p class="archive__item-excerpt" itemprop="description">What is hackintosh
 
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="https://github.com">Post: Link
-</a> <a href="/blog/post-link/" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">This theme supports link posts, made famous by John Gruber. To use, just add link: http://url-you-want-linked to the post’s YAML front matter and you’re done.
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/post-notice/" rel="permalink">Post: Notice
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">A notice displays information that explains nearby content. Often used to call attention to a particular detail.
-
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/blog/post-chat/" rel="permalink">Post: Chat
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">Abbott: Strange as it may seem, they give ball players nowadays very peculiar names.
-
-</p>
+Hackintosh is the corresponding word to macintosh, which is the operation system developed by Apple officially.
+On the contrary, hackinto...</p>
   </article>
 </div>
 
@@ -550,6 +440,7 @@
   
   
 </div>
+
     </div>
 
     
@@ -577,6 +468,10 @@
     
       
         
+          <li><a href="https://www.linkedin.com/in/zhiwei2017/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
           <li><a href="https://github.com/zhiwei2017/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
         
       
@@ -588,7 +483,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2022 Home. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 Home. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>
