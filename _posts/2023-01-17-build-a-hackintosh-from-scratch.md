@@ -1,5 +1,5 @@
 ---
-title: "Hacktosh Monterey 12.6.1 Installation"
+title: "Build a hackintosh from scratch"
 date: 2023-01-17T01:56:15+01:00
 excerpt_separator: "<!--more-->"
 categories:
@@ -105,10 +105,10 @@ the folders **Boot** and **OC** from the EFI I provided to replace the ones from
 ## BIOS Setup
 
 + Advanced > CPU Configuration > Intel (VMX) Virtualization Technology > Enabled (defalut)
-+ Advanced > CPU Configuration > Active Performance Cores > All (i5 12400f have no E-Cores, unknown)
++ Advanced > CPU Configuration > Active Performance Cores > All
 + Advanced > CPU Configuration > Hyper-Threading > Enabled (defalut)
 + Advanced > System Agent (SA) Configuration > VT-d > Enabled (defalut)
-+ Advanced > System Agent (SA) Configuration > Control Iommu Pre-boot Behavior > Disable IOMMU (default? not sure)
++ Advanced > System Agent (SA) Configuration > Control Iommu Pre-boot Behavior > Disable IOMMU (default)
 + Advanced > PCI Subsystem Settings > Above 4G Decording > Enabled (defalut)
 + Advanced > PCI Subsystem Settings > Re-Size BAR Support > Enabled (defalut)
 + Advanced > USB Configuration > Legacy USB Support > Enabled
@@ -137,7 +137,7 @@ and section [Post Install](https://dortania.github.io/OpenCore-Post-Install/) fr
 3. Install Windows 11
 
     + By default, Windows system cannot use the Broadcom WIFI/Bluetooth card. Therefore, at the stage **connect to internet** you cannot find any wifi, if you don't connect your PC with a LAN cable.
-    + However, there is no button for skip this step by default. You can solve this issue by pressing **Shift** + **F10** to open the terminal and inputting `OOBE\BYPASSNRO` to skip this step.
+    + However, there is no button for skipping this step by default. You can solve this issue by pressing **Shift** + **F10** to open the terminal and inputting `OOBE\BYPASSNRO` to skip this step.
 4. When you finish the installation, download the file **win_10_64_bcm_driver.zip**, and install the drivers for bluetooth and wifi individually.
 
 ## Download
