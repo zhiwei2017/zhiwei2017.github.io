@@ -1,0 +1,596 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Feedback about Luigi Pipeline - Home</title>
+<meta name="description" content="Introduction  In data science project, normally data scientists would use jupyter notebooks for developing Machine Learning models. A good thing about jupyter notebooks is the interactiveness with end user. No matter which Machine Learning  library you use, scikit-learn, tensorflow or pytorch, with jupyter notebook you can develop your model step by step and check the intermediate outputs at every time.  However, when the DS project is in production environment, the ML model training pipeline should be already stable  and the interactiveness of jupyter notebook becomes less and less important. Should we then stop using jupyter notebooks at this point? What’s the alternative solution? I think many people would ask these two questions. And the answer is quite simple, use the ML pipeline library to build your ML model training pipeline.  Machine Learning Pipeline Machine Learning Pipeline is close to the idea of converting all the python code from jupyter notebooks to python scripts. Instead of writing your own python scripts for training ML model, with ML pipeline library, such as  Luigi, Apache Airflow , Kedro, you can quickly convert your python code in jupyter notebooks to a modern popular ML model training pipeline. Train  a model becomes the most easiest thing to do, just through one terminal command, the training will be started. WHat you need to do is just wait, wait until the pipeline finishes and get the outputs you need.  Why Luigi I have used luigi in 2019. Back then, I just had 2 years of working experience and still counted as a newbie. I continued developed a luigi pipeline. It’s a luigi pipeline runs periodically. This time, I first thought about luigi. Since there are other colleagues from work are also using luigi pipeline. I decide to use it again.  Upside about Luigi Luigi pipeline is very easy to learn and use. For each pipeline step what you need to do is to define the required inputs, outs and a run function. If you have a very complicated logic about your training pipeline, such as chaining small pipeline steps to a relative big pipeline steps or creating new pipeline steps at running, don’t worry, it’s very easy to implement  it with luigi.  A tip about using Luigi I have seen many people built a very big luigi pipeline, containing a lot of folders, sub-folders for source code. At the  end, even with luigi, the whole pipeline structure is so bloated, such that developer gets lost in the code very easily. And the maintenance of such huge pipeline is a nightmare.  An easy way to keep your pipeline structure as simple as possible, is to build a python package containing all the core functions, classes. What you have to do with your luigi pipeline is just import those functions or classes and use them in the run function of each pipeline step. By doing so, your luigi pipeline structure will be just a folder containing each pipeline step as a independent python file. The maintenance work for a python package and a simple luigi pipeline becomes  much easier than for a huge complicated luigi pipeline.  Downside about luigi Personally I like to write tests as many as possible to make sure the stability of my code. And tests makes debug easy as well. But when I start to write tests for my luigi pipeline, I start to have headaches. There isn’t many tutorials  out there for write tests for luigi pipeline. And the library luigi itself doesn’t provide any testing functions.  I spent a lot of time on writing tests for luigi pipeline. Mock from unittest package, doesn’t help that much. What I figured  out at the end, is to prepare a testing data for my luigi pipeline. I run the pipeline with it to have the outputs from all the pipeline steps. Then I zipped the outputs for each pipeline step and put them in the resources folder of tests folder. To test each pipeline step, I just need to prepare the required inputs for it and execute the pipeline for the particular step. Then check the outputs of the pipeline step. With this approach, I’m finally able to test my training pipeline. However, I ended up with having too many binary files in the resources folder. For now, I can accept it.  Conclusion Luigi pipeline is definitely an awesome ML pipeline library, it’s worth you to try at least. Just bear in mind that testing your pipeline is not an easy job, but also not impossible.  For the next step, I will try with - Apache Airflow , and do a comparison with Luigi.  References    Luigi   Apache Airflow   Kedro">
+
+
+  <meta name="author" content="Zhiwei Zhang">
+  
+  <meta property="article:author" content="Zhiwei Zhang">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Home">
+<meta property="og:title" content="Feedback about Luigi Pipeline">
+<meta property="og:url" content="http://localhost:4000/blog/feedback-about-luigi-pipeline/">
+
+
+  <meta property="og:description" content="Introduction  In data science project, normally data scientists would use jupyter notebooks for developing Machine Learning models. A good thing about jupyter notebooks is the interactiveness with end user. No matter which Machine Learning  library you use, scikit-learn, tensorflow or pytorch, with jupyter notebook you can develop your model step by step and check the intermediate outputs at every time.  However, when the DS project is in production environment, the ML model training pipeline should be already stable  and the interactiveness of jupyter notebook becomes less and less important. Should we then stop using jupyter notebooks at this point? What’s the alternative solution? I think many people would ask these two questions. And the answer is quite simple, use the ML pipeline library to build your ML model training pipeline.  Machine Learning Pipeline Machine Learning Pipeline is close to the idea of converting all the python code from jupyter notebooks to python scripts. Instead of writing your own python scripts for training ML model, with ML pipeline library, such as  Luigi, Apache Airflow , Kedro, you can quickly convert your python code in jupyter notebooks to a modern popular ML model training pipeline. Train  a model becomes the most easiest thing to do, just through one terminal command, the training will be started. WHat you need to do is just wait, wait until the pipeline finishes and get the outputs you need.  Why Luigi I have used luigi in 2019. Back then, I just had 2 years of working experience and still counted as a newbie. I continued developed a luigi pipeline. It’s a luigi pipeline runs periodically. This time, I first thought about luigi. Since there are other colleagues from work are also using luigi pipeline. I decide to use it again.  Upside about Luigi Luigi pipeline is very easy to learn and use. For each pipeline step what you need to do is to define the required inputs, outs and a run function. If you have a very complicated logic about your training pipeline, such as chaining small pipeline steps to a relative big pipeline steps or creating new pipeline steps at running, don’t worry, it’s very easy to implement  it with luigi.  A tip about using Luigi I have seen many people built a very big luigi pipeline, containing a lot of folders, sub-folders for source code. At the  end, even with luigi, the whole pipeline structure is so bloated, such that developer gets lost in the code very easily. And the maintenance of such huge pipeline is a nightmare.  An easy way to keep your pipeline structure as simple as possible, is to build a python package containing all the core functions, classes. What you have to do with your luigi pipeline is just import those functions or classes and use them in the run function of each pipeline step. By doing so, your luigi pipeline structure will be just a folder containing each pipeline step as a independent python file. The maintenance work for a python package and a simple luigi pipeline becomes  much easier than for a huge complicated luigi pipeline.  Downside about luigi Personally I like to write tests as many as possible to make sure the stability of my code. And tests makes debug easy as well. But when I start to write tests for my luigi pipeline, I start to have headaches. There isn’t many tutorials  out there for write tests for luigi pipeline. And the library luigi itself doesn’t provide any testing functions.  I spent a lot of time on writing tests for luigi pipeline. Mock from unittest package, doesn’t help that much. What I figured  out at the end, is to prepare a testing data for my luigi pipeline. I run the pipeline with it to have the outputs from all the pipeline steps. Then I zipped the outputs for each pipeline step and put them in the resources folder of tests folder. To test each pipeline step, I just need to prepare the required inputs for it and execute the pipeline for the particular step. Then check the outputs of the pipeline step. With this approach, I’m finally able to test my training pipeline. However, I ended up with having too many binary files in the resources folder. For now, I can accept it.  Conclusion Luigi pipeline is definitely an awesome ML pipeline library, it’s worth you to try at least. Just bear in mind that testing your pipeline is not an easy job, but also not impossible.  For the next step, I will try with - Apache Airflow , and do a comparison with Luigi.  References    Luigi   Apache Airflow   Kedro">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2023-03-02T21:08:15+01:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/feedback-about-luigi-pipeline/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": null,
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Home Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Home
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/me.jpeg" alt="Zhiwei Zhang" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Zhiwei Zhang</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>I’m a Senior Machine Learning Engineer, have 10+ years experience with python, many years experience with C++ and CI/CD pipeline in Github, GitLab, Bitbucket and Jenkins.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://www.linkedin.com/in/zhiwei2017/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">LinkedIn</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Feedback about Luigi Pipeline">
+    <meta itemprop="description" content="IntroductionIn data science project, normally data scientists would use jupyter notebooks for developing Machine Learningmodels. A good thing about jupyter notebooks is the interactiveness with end user. No matter which Machine Learning library you use, scikit-learn, tensorflow or pytorch, with jupyter notebook you can develop your model step by stepand check the intermediate outputs at every time.However, when the DS project is in production environment, the ML model training pipeline should be already stable and the interactiveness of jupyter notebook becomes less and less important. Should we then stop using jupyter notebooksat this point? What’s the alternative solution? I think many people would ask these two questions. And the answer is quite simple,use the ML pipeline library to build your ML model training pipeline.Machine Learning PipelineMachine Learning Pipeline is close to the idea of converting all the python code from jupyter notebooks to python scripts.Instead of writing your own python scripts for training ML model, with ML pipeline library, such as Luigi, Apache Airflow,Kedro, you can quickly convert your python code in jupyter notebooks to a modern popular ML model training pipeline. Train a model becomes the most easiest thing to do, just through one terminal command, the training will be started. WHat you needto do is just wait, wait until the pipeline finishes and get the outputs you need.Why LuigiI have used luigi in 2019. Back then, I just had 2 years of working experience and still counted as a newbie.I continued developed a luigi pipeline. It’s a luigi pipeline runs periodically. This time, I first thought about luigi.Since there are other colleagues from work are also using luigi pipeline. I decide to use it again.Upside about LuigiLuigi pipeline is very easy to learn and use. For each pipeline step what you need to do is to define the required inputs,outs and a run function. If you have a very complicated logic about your training pipeline, such as chaining small pipelinesteps to a relative big pipeline steps or creating new pipeline steps at running, don’t worry, it’s very easy to implement it with luigi.A tip about using LuigiI have seen many people built a very big luigi pipeline, containing a lot of folders, sub-folders for source code. At the end, even with luigi, the whole pipeline structure is so bloated, such that developer gets lost in the code very easily.And the maintenance of such huge pipeline is a nightmare.An easy way to keep your pipeline structure as simple as possible, is to build a python package containing all the corefunctions, classes. What you have to do with your luigi pipeline is just import those functions or classes and use themin the run function of each pipeline step. By doing so, your luigi pipeline structure will be just a folder containing eachpipeline step as a independent python file. The maintenance work for a python package and a simple luigi pipeline becomes much easier than for a huge complicated luigi pipeline.Downside about luigiPersonally I like to write tests as many as possible to make sure the stability of my code. And tests makes debug easyas well. But when I start to write tests for my luigi pipeline, I start to have headaches. There isn’t many tutorials out there for write tests for luigi pipeline. And the library luigi itself doesn’t provide any testing functions.I spent a lot of time on writing tests for luigi pipeline. Mock from unittest package, doesn’t help that much. What I figured out at the end, is to prepare a testing data for my luigi pipeline. I run the pipeline with it to have the outputs fromall the pipeline steps. Then I zipped the outputs for each pipeline step and put them in the resources folder of tests folder.To test each pipeline step, I just need to prepare the required inputs for it and execute the pipeline for the particular step.Then check the outputs of the pipeline step. With this approach, I’m finally able to test my training pipeline. However,I ended up with having too many binary files in the resources folder. For now, I can accept it.ConclusionLuigi pipeline is definitely an awesome ML pipeline library, it’s worth you to try at least. Just bear in mind that testingyour pipeline is not an easy job, but also not impossible.For the next step, I will try with - Apache Airflow, and do a comparison with Luigi.References  Luigi  Apache Airflow  Kedro">
+    <meta itemprop="datePublished" content="2023-03-02T21:08:15+01:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/blog/feedback-about-luigi-pipeline/" class="u-url" itemprop="url">Feedback about Luigi Pipeline
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="introduction">Introduction</h1>
+
+<p>In data science project, normally data scientists would use jupyter notebooks for developing Machine Learning
+models. A good thing about jupyter notebooks is the interactiveness with end user. No matter which Machine Learning 
+library you use, scikit-learn, tensorflow or pytorch, with jupyter notebook you can develop your model step by step
+and check the intermediate outputs at every time.</p>
+
+<p>However, when the DS project is in production environment, the ML model training pipeline should be already stable 
+and the interactiveness of jupyter notebook becomes less and less important. Should we then stop using jupyter notebooks
+at this point? What’s the alternative solution? I think many people would ask these two questions. And the answer is quite simple,
+use the ML pipeline library to build your ML model training pipeline.</p>
+
+<h1 id="machine-learning-pipeline">Machine Learning Pipeline</h1>
+<p>Machine Learning Pipeline is close to the idea of converting all the python code from jupyter notebooks to python scripts.
+Instead of writing your own python scripts for training ML model, with ML pipeline library, such as 
+<a href="https://github.com/spotify/luigi">Luigi</a>, <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjv18jvn779AhWAYPEDHZhUCDYQFnoECAsQAQ&amp;url=https%3A%2F%2Fairflow.apache.org%2F&amp;usg=AOvVaw388kHRAT6nV9AH5zbkuDlv">Apache Airflow</a>
+,
+<a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwi--JP7n779AhXtSfEDHTuzD-8QFnoECAkQAQ&amp;url=https%3A%2F%2Fkedro.org%2F&amp;usg=AOvVaw0JWG6cOFLtdy93D5ohUxle">Kedro</a>, you can quickly convert your python code in jupyter notebooks to a modern popular ML model training pipeline. Train 
+a model becomes the most easiest thing to do, just through one terminal command, the training will be started. WHat you need
+to do is just wait, wait until the pipeline finishes and get the outputs you need.</p>
+
+<h1 id="why-luigi">Why Luigi</h1>
+<p>I have used luigi in 2019. Back then, I just had 2 years of working experience and still counted as a newbie.
+I continued developed a luigi pipeline. It’s a luigi pipeline runs periodically. This time, I first thought about luigi.
+Since there are other colleagues from work are also using luigi pipeline. I decide to use it again.</p>
+
+<h1 id="upside-about-luigi">Upside about Luigi</h1>
+<p>Luigi pipeline is very easy to learn and use. For each pipeline step what you need to do is to define the required inputs,
+outs and a run function. If you have a very complicated logic about your training pipeline, such as chaining small pipeline
+steps to a relative big pipeline steps or creating new pipeline steps at running, don’t worry, it’s very easy to implement 
+it with luigi.</p>
+
+<h1 id="a-tip-about-using-luigi">A tip about using Luigi</h1>
+<p>I have seen many people built a very big luigi pipeline, containing a lot of folders, sub-folders for source code. At the 
+end, even with luigi, the whole pipeline structure is so bloated, such that developer gets lost in the code very easily.
+And the maintenance of such huge pipeline is a nightmare.</p>
+
+<p>An easy way to keep your pipeline structure as simple as possible, is to build a python package containing all the core
+functions, classes. What you have to do with your luigi pipeline is just import those functions or classes and use them
+in the run function of each pipeline step. By doing so, your luigi pipeline structure will be just a folder containing each
+pipeline step as a independent python file. The maintenance work for a python package and a simple luigi pipeline becomes 
+much easier than for a huge complicated luigi pipeline.</p>
+
+<h1 id="downside-about-luigi">Downside about luigi</h1>
+<p>Personally I like to write tests as many as possible to make sure the stability of my code. And tests makes debug easy
+as well. But when I start to write tests for my luigi pipeline, I start to have headaches. There isn’t many tutorials 
+out there for write tests for luigi pipeline. And the library luigi itself doesn’t provide any testing functions.</p>
+
+<p>I spent a lot of time on writing tests for luigi pipeline. Mock from unittest package, doesn’t help that much. What I figured 
+out at the end, is to prepare a testing data for my luigi pipeline. I run the pipeline with it to have the outputs from
+all the pipeline steps. Then I zipped the outputs for each pipeline step and put them in the <em>resources</em> folder of <em>tests</em> folder.
+To test each pipeline step, I just need to prepare the required inputs for it and execute the pipeline for the particular step.
+Then check the outputs of the pipeline step. With this approach, I’m finally able to test my training pipeline. However,
+I ended up with having too many binary files in the <em>resources</em> folder. For now, I can accept it.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Luigi pipeline is definitely an awesome ML pipeline library, it’s worth you to try at least. Just bear in mind that testing
+your pipeline is not an easy job, but also not impossible.</p>
+
+<p>For the next step, I will try with - <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjv18jvn779AhWAYPEDHZhUCDYQFnoECAsQAQ&amp;url=https%3A%2F%2Fairflow.apache.org%2F&amp;usg=AOvVaw388kHRAT6nV9AH5zbkuDlv">Apache Airflow</a>
+, and do a comparison with <a href="https://github.com/spotify/luigi">Luigi</a>.</p>
+
+<h1 id="references">References</h1>
+<ul>
+  <li><a href="https://github.com/spotify/luigi">Luigi</a></li>
+  <li><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwjv18jvn779AhWAYPEDHZhUCDYQFnoECAsQAQ&amp;url=https%3A%2F%2Fairflow.apache.org%2F&amp;usg=AOvVaw388kHRAT6nV9AH5zbkuDlv">Apache Airflow</a></li>
+  <li><a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwi--JP7n779AhXtSfEDHTuzD-8QFnoECAkQAQ&amp;url=https%3A%2F%2Fkedro.org%2F&amp;usg=AOvVaw0JWG6cOFLtdy93D5ohUxle">Kedro</a></li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#feedback" class="page__taxonomy-item p-category" rel="tag">Feedback</a><span class="sep">, </span>
+    
+      <a href="/tags/#luigi-pipeline" class="page__taxonomy-item p-category" rel="tag">Luigi Pipeline</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#blog" class="page__taxonomy-item p-category" rel="tag">blog</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2023-03-02T21:08:15+01:00">March 2, 2023</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Feedback+about+Luigi+Pipeline%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffeedback-about-luigi-pipeline%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffeedback-about-luigi-pipeline%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2Ffeedback-about-luigi-pipeline%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/build-a-hackintosh-from-scratch/" class="pagination--pager" title="Build a hackintosh from scratch
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You May Also Enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/build-a-hackintosh-from-scratch/" rel="permalink">Build a hackintosh from scratch
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">What is hackintosh
+
+Hackintosh is the corresponding word to macintosh, which is the operation system developed by Apple officially.
+On the contrary, hackinto...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/blog/findings-to-python-packages-tld-and-tldextract/" rel="permalink">Findings to Python Packages tld and tldextract
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Python Package tldextract is used by the framework scrapy for getting the top level domain. 
+However, on the very first call of the function tldextract.extra...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://www.linkedin.com/in/zhiwei2017/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+        
+          <li><a href="https://github.com/zhiwei2017/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2023 Home. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
