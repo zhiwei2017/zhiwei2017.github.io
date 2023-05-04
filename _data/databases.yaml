@@ -8,3 +8,5 @@
   score: 4
 - name: redis
   score: 3
+- name: Apache Cassandra
+  score: 3

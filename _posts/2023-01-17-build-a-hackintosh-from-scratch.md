@@ -3,7 +3,7 @@ title: "Build a hackintosh from scratch"
 date: 2023-01-17T01:56:15+01:00
 excerpt_separator: "<!--more-->"
 categories:
-  - blog
+  - Instruction
 tags:
   - hackintosh
   - Monterey

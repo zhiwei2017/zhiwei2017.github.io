@@ -27,7 +27,7 @@ Instead of writing your own python scripts for training ML model, with ML pipeli
 [Luigi](https://github.com/spotify/luigi), [Apache Airflow](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjv18jvn779AhWAYPEDHZhUCDYQFnoECAsQAQ&url=https%3A%2F%2Fairflow.apache.org%2F&usg=AOvVaw388kHRAT6nV9AH5zbkuDlv)
 ,
 [Kedro](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi--JP7n779AhXtSfEDHTuzD-8QFnoECAkQAQ&url=https%3A%2F%2Fkedro.org%2F&usg=AOvVaw0JWG6cOFLtdy93D5ohUxle), you can quickly convert your python code in jupyter notebooks to a modern popular ML model training pipeline. Train 
-a model becomes the most easiest thing to do, just through one terminal command, the training will be started. WHat you need
+a model becomes the most easiest thing to do, just through one terminal command, the training will be started. What you need
 to do is just wait, wait until the pipeline finishes and get the outputs you need. 
 
 # Why Luigi
